@@ -16,3 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ohai_plugin 'ec2-tags' do
+  name 'ec2-tags'
+  resource :template
+end
