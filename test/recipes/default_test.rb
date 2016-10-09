@@ -5,14 +5,24 @@
 # The Inspec reference, with examples and extensive documentation, can be
 # found at https://docs.chef.io/inspec_reference.html
 
-unless os.windows?
-  describe user('root') do
-    it { should exist }
-    skip 'This is an example test, replace with your own test.'
+require 'json'
+
+file_path = os.windows? ? 'C:\node.json' : '/tmp/node.json'
+
+describe file(file_path) do
+  it { should exist }
+end
+
+ndoe_data = JSON.parse(File.read(file_path))
+
+describe 'created-by' do
+  it 'should be test-kitchen' do
+    expect(node['ec2']['tags']['created-by']).to eq 'test-kitchen'
   end
 end
 
-describe port(80) do
-  it { should_not be_listening }
-  skip 'This is an example test, replace with your own test.'
+describe 'example-tag' do
+  it 'should be example' do
+    expect(node['ec2']['tags']['example-tag']).to eq 'example'
+  end
 end

@@ -24,7 +24,7 @@ verifier:
 suites:
   - name: default
     run_list:
-      - recipe[ec2-tags-ohai-plugin::default]
+      - recipe[ec2-tags-test::default]
     verifier:
       inspec_tests:
         - test/recipes
