@@ -1,9 +1,19 @@
 ---
 driver:
-  name: vagrant
+  name: ec2
+  aws_ssh_key_id: test-kitchen
+  security_group_ids: ["<%= ENV['AWS_SECURITY_GROUP_ID'] %>"]
+  region: "<%= ENV['AWS_REGION'] %>"
+  subnet_id: "<%= ENV['AWS_SUBNET_ID'] %>"
+  instance_type: t2.micro
 
-provisioner:
-  name: chef_zero
+transport:
+  ssh_key: test-kitchen.pem
+
+platforms:
+  - name: ubuntu-14.04
+  - name: ubuntu-16.04
+  - name: centos-7.1
 
 verifier:
   name: inspec
