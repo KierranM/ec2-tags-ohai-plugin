@@ -7,8 +7,8 @@ driver:
   subnet_id: "<%= ENV['AWS_SUBNET_ID'] %>"
   instance_type: t2.micro
   tags:
-    - created-by: test-kitchen
-    - example-tag: example
+    created-by: test-kitchen
+    example-tag: example
 
 transport:
   ssh_key: test-kitchen.pem
