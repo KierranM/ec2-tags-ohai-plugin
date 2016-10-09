@@ -6,6 +6,9 @@ driver:
   region: "<%= ENV['AWS_REGION'] %>"
   subnet_id: "<%= ENV['AWS_SUBNET_ID'] %>"
   instance_type: t2.micro
+  tags:
+    - created-by: test-kitchen
+    - example-tag: example
 
 transport:
   ssh_key: test-kitchen.pem
@@ -17,10 +20,6 @@ platforms:
 
 verifier:
   name: inspec
-
-platforms:
-  - name: ubuntu-16.04
-  - name: centos-7.2
 
 suites:
   - name: default
