@@ -1,7 +1,7 @@
 require 'json'
 require 'serverspec'
 
-file_path = os.windows? ? 'C:\node.json' : '/opt/node.json'
+file_path = os['family'] == 'windows' ? 'C:\node.json' : '/opt/node.json'
 
 describe file(file_path) do
   it { should exist }
