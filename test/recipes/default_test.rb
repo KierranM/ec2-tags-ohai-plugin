@@ -7,7 +7,7 @@
 
 require 'json'
 
-file_path = os.windows? ? 'C:\node.json' : '/tmp/node.json'
+file_path = os.windows? ? 'C:\node.json' : '/opt/node.json'
 
 describe file(file_path) do
   it { should exist }
