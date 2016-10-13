@@ -17,9 +17,17 @@ transport:
 platforms:
   - name: ubuntu-14.04
   - name: ubuntu-16.04
-  - name: centos-7.1
-  - name: amazon
+  - name: rhel-6
+  - name: rhel-7
+  - name: centos-6
+  - name: centos-7
+  - name: fedora
+  - name: amazon-linux
+    source_ami:
+      name: amzn-ami-hvm-*.x86_64-gp2
   - name: windows-2012r2
+    source_ami:
+      name: Windows_Server_2012_R2_RTM_English-64Bit-Base-*
 
 suites:
   - name: default

@@ -1,11 +1,11 @@
 require 'json'
-require 'serverspec'
+require 'spec_helper'
 
 describe 'EC2 Tags plugin' do
-  let(:file_path) { os['family'] == 'windows' ? 'C:\node.json' : '/opt/node.json' }
-  let(:node_data) { JSON.parse(File.read(file_path)) }
+  node_data_file_path = os[:family] == 'windows' ? 'C:\node.json' : '/opt/node.json'
+  let(:node_data) { JSON.parse(File.read(node_data_file_path)) }
 
-  describe file(file_path) do
+  describe file(node_data_file_path) do
     it { should exist }
   end
 
