@@ -9,7 +9,7 @@ Ohai.plugin(:EC2Tags) do
     begin
       require 'aws-sdk-core'
 
-      client = Aws::EC2::Client.new
+      client = Aws::EC2::Client.new region: ec2['placement_availability_zone'][0...-1]
       resp = client.describe_tags(
         filters: [
           {
