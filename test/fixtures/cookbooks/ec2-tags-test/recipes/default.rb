@@ -1,6 +1,5 @@
 require 'json'
 
-include_recipe 'aws'
 include_recipe 'ec2-tags-ohai-plugin'
 
 file_path = node['platform'] == 'windows' ? 'C:\node.json' : '/opt/node.json'
