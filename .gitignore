@@ -14,4 +14,4 @@ bin/*
 
 .kitchen/
 .kitchen.local.yml
-test-kitchen.pem
+*.pem
