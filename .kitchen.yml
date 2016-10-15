@@ -12,7 +12,7 @@ driver:
     example-tag: example
 
 transport:
-  ssh_key: test-kitchen.pem
+  ssh_key: .test-kitchen.pem
 
 platforms:
   - name: ubuntu-14.04

@@ -11,14 +11,11 @@ env:
   - secure: 1J7tfoVJ4FFoMwSg1CHy+eFJM/ejpKfeE9CBlmllgavyQPIQ6tQwdRtTYTAPg7vE/DKsQspVk5yg9Z7rI3B6kZLQDM7fXFJtdZDNVqTx69TuCVhdSlHlfHNx+qpJV11ExLdO+cdpS+i2bqrgTQv/YJufj1iyaQ6oEohW8OlDqnlEt4qSX98Je6ZEaHrs3qV3AKBGnOssr5ia/fZDDOxczVJyd6W5fpHUx1XLLkoA4XrzE2zrnUqF6yF4vC3ZobFVeM5d8B4cutM+nZe96Q3FwPEMUdnrfaJyb9MRS6gV9WoxmDE4GrHvjXOjyzO5X2P88bXXk6z/CVw2WhBg1kCNF6oD7lQuN0/CsNL4Pv0jQRLt7LZBhILVIYqt/uchZ8gtUlYBpLYunVty6B7PBIrtTlFQpznPbfdD/0aWbPr2a6/JST5Ib0HnqkJ1p9abIeRQAscn88bOZi4VDsU+L9MWZD+dK/Z/MUEoH4ZYQpSE9yyVv+Fo9slyyC1+CnzzRHeKSPqCVOX9lk9bCDYENbKl9EsyCL7lGu7mJc/FV5Jx+uhyNE2mitWQvgPzM2dps7jtjTlPuz9UylUIrRJQ0MqR6Oq3xyDHFrBO0/Vx9alOIdPkLXevJGvXrD63nMKJk89sahpix/0np8waRFlyd6r79DpiANwEz4mkVpsdJtmRCYc=
   - secure: kwafTu1rrRd6v5Nn8sjgB7AnqvLoVmB29cfaR3yh0Mm+IqPxF0f99vOGeeUNA1Futcr2pxTZ+oXOpEQkxs8dHa6pwyncSPjHBwFTgR4DdWYFAhrfwTy9nb0XzSuRVJvwAgmmoEJfo1vzDf7MpA8RCvZ/vbEvk8b+reTjkQHlxeeZf9mY2um8FF4ymOXwS43gu4pUCfRvmrXKNcQG37XaGAn9r7IcKbQocOKTaexNGInFeB+d9MkaP2pI/ZrMNdvL3bxkahpGcLDTc1E6HkYPWT+bH0Y2iZn/S4RSzPnw9rJ5F2j9mPbna46gFLNcvkOSv0ngT2iRa3gCr383MzEsmrzCZxjgSdOw0BNzEy50j9s2KX1jYF33PD+g2usjIEK/Dd1uwZP+ZYm0aApGKpdESdPh2yYvvKYtOfsA5hLge1YZ53ftUYSOZzZFBDkcir2JMm04+o+YbcimeXDLRLqTDDbtO4eRju1atvHSGre+SAVi5OeWcH1t5CKi4hOc6ZJsUhCcHjrcic9d/wcwQHsUpG0BgRfktbDEcJv29m0PpkyhPIgDsQ/j3sJdMyrU6kT7ml13H6DSDeDCUp4LlgNveJZIC2w0NVkh4Bf6YmYyY7mzap1DQjmSoY4xruz2BtXiUc1ul2RfiiZc8++J8gVji7HbOJXvKeZr45xkXDmLNS8=
 before_install:
-- openssl aes-256-cbc -K $encrypted_52ded30c86ce_key -iv $encrypted_52ded30c86ce_iv
-  -in test-kitchen.pem.enc -out test-kitchen.pem -d
+  - openssl aes-256-cbc -K $encrypted_52ded30c86ce_key -iv $encrypted_52ded30c86ce_iv
+    -in .test-kitchen.pem.enc -out .test-kitchen.pem -d
 script: bundle exec kitchen test -c
 deploy:
   provider: script
-  script: openssl aes-256-cbc -K $encrypted_52ded30c86ce_key -iv $encrypted_52ded30c86ce_iv
-    -in .supermarket.pem.enc -out .supermarket.pem -d && rvm $TRAVIS_RUBY_VERSION
-    do bundle exec stove login --username kierranm --key .supermarket.pem && rvm $TRAVIS_RUBY_VERSION
-    do bundle exec stove --no-git
+  script: openssl aes-256-cbc -K $encrypted_52ded30c86ce_key -iv $encrypted_52ded30c86ce_iv -in .supermarket.pem.enc -out .supermarket.pem -d && rvm $TRAVIS_RUBY_VERSION do bundle exec stove login --username kierranm --key .supermarket.pem && rvm $TRAVIS_RUBY_VERSION do bundle exec stove --no-git
   on:
     tags: true
