@@ -15,4 +15,4 @@ supports 'fedora'
 supports 'amazon'
 supports 'windows'
 
-depends 'ohai'
+depends 'ohai', '>= 4.0.0'
