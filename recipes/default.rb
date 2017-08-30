@@ -16,7 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-chef_gem 'aws-sdk' do
+chef_gem 'aws-sdk-ec2' do
   compile_time true
   version node['aws']['aws_sdk_version'] if node.key? 'aws'
 end
