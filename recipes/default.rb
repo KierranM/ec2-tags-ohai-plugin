@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: ec2-tags-ohai-plugin
+# Cookbook:: ec2-tags-ohai-plugin
 # Recipe:: default
 #
-# Copyright 2016 The Authors
+# Copyright:: 2016 The Authors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ chef_gem 'aws-sdk-ec2' do
   compile_time true
 end
 
-ohai_plugin 'ec2-tags' do
-  resource :template
+ohai 'ec2/tags' do
   compile_time true
 end

@@ -1,7 +1,7 @@
 ---
 driver:
   name: ec2
-  aws_ssh_key_id: test-kitchen
+#  aws_ssh_key_id: test-kitchen
   security_group_ids: ["<%= ENV['AWS_SECURITY_GROUP_ID'] %>"]
   region: "<%= ENV['AWS_REGION'] %>"
   subnet_id: "<%= ENV['AWS_SUBNET_ID'] %>"
@@ -11,8 +11,8 @@ driver:
     created-by: test-kitchen
     example-tag: example
 
-transport:
-  ssh_key: .test-kitchen.pem
+#transport:
+#  ssh_key: .test-kitchen.pem
 
 platforms:
   - name: ubuntu-14.04
@@ -22,7 +22,7 @@ platforms:
   - name: centos-6
   - name: centos-7
   - name: fedora
-  - name: amazon-linux
+  - name: amazon2
     source_ami:
       name: amzn-ami-hvm-*.x86_64-gp2
   - name: windows-2012r2
