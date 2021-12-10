@@ -19,10 +19,11 @@ Ohai.plugin(:EC2Tags) do
         },
       ]
     )
-
     ec2[:tags] = resp.tags.map { |tag| { tag.key => tag.value } }.inject(Mash.new, :merge)
   rescue Aws::EC2::Errors::ServiceError => e
     Ohai::Log.warn("Error while retrieving tags from AWS: #{e.message}")
+  rescue Aws::Errors::MissingCredentialsError => e
+    Ohai::Log.warn("Credentials Error while retrieving tags from AWS: #{e.message}")
   rescue LoadError
     Ohai::Log.warn('AWS SDK Gem is not installed, unable to retrieve tags')
   end

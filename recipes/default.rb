@@ -20,6 +20,4 @@ chef_gem 'aws-sdk-ec2' do
   compile_time true
 end
 
-ohai 'ec2/tags' do
-  compile_time true
-end
+Ohai::Config[:ohai][:plugin_path].push Chef::Config[:ohai_segment_plugin_path] unless Ohai::Config[:ohai][:plugin_path].include?(Chef::Config[:ohai_segment_plugin_path])
