@@ -14,13 +14,24 @@ driver:
 transport:
   ssh_key: .test-kitchen.pem
 
+verifier:
+  name: inspec
+
 platforms:
-  - name: ubuntu-14.04
   - name: ubuntu-16.04
+  - name: ubuntu-20.04
   - name: rhel-6
+    transport:
+      username: ec2-user
   - name: rhel-7
+    transport:
+      username: ec2-user
   - name: centos-6
+    transport:
+      username: centos
   - name: centos-7
+    transport:
+      username: centos
   - name: fedora
   - name: amazon2
     source_ami:
